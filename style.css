@@ -1,26 +1,65 @@
+/*importacion de fonst google*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 /* Contenedor principal, ingreso tareas & pendientes */
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
+.main-container{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: aqua; */
+    justify-content: center;
+    width: 100%;
 }
 
-.container, .main{
+.general-container{
+    background-color: #004714;
+    border-radius: 15px;
     width: 500px;
-    background-color: rgb(210, 218, 144);
+    min-width: 300px;
     display: flex;
     flex-direction: column;
+    margin: 0 15px;
+
 }
 
 /* Contenedor de input ingreso tareas */
-.container, .agregar{
-    background-color: rgb(239, 253, 115);
+.container.agregar{
     display: flex;
     flex-direction: column;
+}
+
+/*estilos para input ingresar tarea*/
+label[for="tarea-in"]{
+    width: 80%;
+    margin: 0 auto;
+}
+input[name="tarea-in"]{
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/*estilos para boton agregar tarea*/
+.button.agregar-tarea{
+    width: 80%;
+    background-color: #004714;
+    margin: 5px auto;
+    transition: background-color 0.5s;
+}
+.button.agregar-tarea:hover{
+    cursor: pointer;
+    background-color: #398132;
+}
+
+/* @media (max-width:640px) {
+    input[name="tarea-in"], .button.agregar-tarea, label[for="tarea-in"]{
+        width: 50%;
+    }     
+} */
+.main-title{
+    font-size: calc(20px + 2vw);
 }
