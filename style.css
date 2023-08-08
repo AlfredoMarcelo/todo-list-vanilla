@@ -55,11 +55,7 @@ input[name="tarea-in"]{
     background-color: #398132;
 }
 
-/* @media (max-width:640px) {
-    input[name="tarea-in"], .button.agregar-tarea, label[for="tarea-in"]{
-        width: 50%;
-    }     
-} */
 .main-title{
     font-size: calc(20px + 2vw);
+    text-align: center;
 }
