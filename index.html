@@ -9,26 +9,29 @@
   <body>
     <header><h1 class="main-title">Todo-list vanilla js</h1></header>
     <main class="main-container">
-      <article class="general-container">
+      <section class="general-container form">
         <form id="formulario-tarea" action="">
-        <div class="container agregar">
-          <label for="tarea-in">Ingresa tu tarea</label>
+          <div class="container agregar">
+            <label for="tarea-in">Ingresa tu tarea</label>
             <input
               type="text"
               name="tarea-in"
               id="agregar-tarea"
               placeholder="mi siguiente tarea"
             />
-            <button type="submit" class="button agregar-tarea">Agregar Tarea</button>
+            <button type="submit" class="button agregar-tarea">
+              Agregar Tarea
+            </button>
           </div>
         </form>
-        <div>
+      </section>
+      <section class="general-container tasks">
+        <div class="tasks-title">
           <h4>Tareas pendientes</h4>
-          <ul id="listaDeTareas">
-            <li class="tareas">tarea 1</li>
-          </ul>
         </div>
-      </article>
+        <ul id="tasks-container"></ul>
+        <div></div>
+      </section>
       <script src="index.js"></script>
     </main>
   </body>

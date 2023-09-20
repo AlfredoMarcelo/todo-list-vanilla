@@ -10,21 +10,27 @@
 }
 
 .main-container{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
+    @media screen and (max-width:1024px){
+        row-gap: 20px;
+        padding: 0 10px;
+    }
 }
 
 .general-container{
-    background-color: #004714;
+    background-color: #00471483;
     border-radius: 15px;
     width: 500px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
-    margin: 0 15px;
-
+    margin: 0 auto;
 }
+
 
 /* Contenedor de input ingreso tareas */
 .container.agregar{
@@ -49,6 +55,7 @@ input[name="tarea-in"]{
     background-color: #004714;
     margin: 5px auto;
     transition: background-color 0.5s;
+    color: #ffffff;
 }
 .button.agregar-tarea:hover{
     cursor: pointer;
@@ -58,4 +65,26 @@ input[name="tarea-in"]{
 .main-title{
     font-size: calc(20px + 2vw);
     text-align: center;
+    color: #dc4405;
+    font-weight: 700;
+}
+
+/*Lista de tareas*/
+.general-container.tasks{
+    margin: 0 auto
+}
+.general-container.form{
+    max-height: 100px;
+}
+
+#tasks-container{
+    list-style: none;
+}
+
+.tasks-title{
+    text-align: center;
+}
+
+.general-container.form{
+    max-height: 87px;
 }
