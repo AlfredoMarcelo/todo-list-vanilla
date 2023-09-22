@@ -3,12 +3,6 @@ const formularioNuevaTarea = document.querySelector('#formulario-tarea')
 const contenedorTareas = document.querySelector('#tasks-container')
 
 
-
-function saludar(e){
-    console.log(e.target.innerHTML)
-}
-
-
 // lista de tareas
 let listaTareas = [];
 
@@ -33,15 +27,24 @@ function agregarNuevaTarea(nuevaTarea){
 }
 
 
-//agregar tarea a contenedor
+//agregar tarea a lista de tareas
 function recorrerArreglo(){
     contenedorTareas.innerHTML = '';
     listaTareas.forEach(function(tarea){
+        const deleteTaskBtn = document.createElement("button")
+        deleteTaskBtn.setAttribute("id", "delete-task")
+        deleteTaskBtn.innerHTML = "x"
+        
         const task = document.createElement("li")
         task.classList.add("task")
-        task.addEventListener('click',saludar)
-        if(task.textContent === tarea)return
         task.textContent = tarea 
+
+        task.appendChild(deleteTaskBtn)
         contenedorTareas.appendChild(task)
+        deleteTaskBtn.addEventListener("click", saludar(tarea))
     })
+}
+
+function saludar(a){
+    console.log(a)
 }

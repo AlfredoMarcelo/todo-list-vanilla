@@ -71,7 +71,8 @@ input[name="tarea-in"]{
 
 /*Lista de tareas*/
 .general-container.tasks{
-    margin: 0 auto
+    margin: 0 auto;
+    min-height: 87px;
 }
 .general-container.form{
     max-height: 100px;
@@ -79,6 +80,7 @@ input[name="tarea-in"]{
 
 #tasks-container{
     list-style: none;
+    padding: 0 1.5rem;
 }
 
 .tasks-title{
@@ -87,4 +89,10 @@ input[name="tarea-in"]{
 
 .general-container.form{
     max-height: 87px;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
