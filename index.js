@@ -43,8 +43,9 @@ function actualizarListaTareas() {
 
   if (listaTareas.length > 0 && !document.querySelector("#delete-tasks")) {
     agregarBtnReinicioListaTarea();
-  }else{
-    contenedorPrincipalListaTareas.removeChild(document.querySelector("#delete-tasks"));  
+  }
+  if(listaTareas.length === 0){
+    contenedorPrincipalListaTareas.removeChild(document.querySelector("#delete-tasks"));
   }
 }
 
