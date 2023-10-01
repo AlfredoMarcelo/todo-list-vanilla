@@ -96,3 +96,16 @@ input[name="tarea-in"]{
     justify-content: space-between;
     margin-bottom: 5px;
 }
+
+#delete-tasks{
+    width: 80%;
+    margin-bottom: 5px;
+    align-self: center;
+}
+#delete-tasks:hover{
+    cursor: pointer;
+}
+
+#delete-task:hover{
+    cursor: pointer;
+}

@@ -1,50 +1,72 @@
-const nuevaTarea = document.querySelector('#agregar-tarea')
-const formularioNuevaTarea = document.querySelector('#formulario-tarea')
-const contenedorTareas = document.querySelector('#tasks-container')
+const nuevaTarea = document.querySelector("#agregar-tarea");
+const formularioNuevaTarea = document.querySelector("#formulario-tarea");
+const contenedorTareas = document.querySelector("#tasks-container");
+const contenedorPrincipalListaTareas = document.querySelector(
+  ".general-container.tasks"
+);
 
-
-// lista de tareas
 let listaTareas = [];
 
-// Manipulacion formulario
-formularioNuevaTarea.addEventListener("submit", handleFormulario)
+formularioNuevaTarea.addEventListener("submit", handleFormulario);
 
-function handleFormulario(event){
-    event.preventDefault()
-    let nuevaTareaEntrante = nuevaTarea.value
-    //validar que entrada cumpla con condiciones avisandole mediante tooltip
-    if(nuevaTareaEntrante === '' || nuevaTareaEntrante.length <= 3)return
-    agregarNuevaTarea(nuevaTareaEntrante)
-    nuevaTarea.value = ""
+function handleFormulario(event) {
+  event.preventDefault();
+  let nuevaTareaEntrante = nuevaTarea.value;
+  if (nuevaTareaEntrante === "" || nuevaTareaEntrante.length <= 3) return;
+  agregarNuevaTarea(nuevaTareaEntrante);
+  nuevaTarea.value = "";
 }
 
-// agregar tarea
-function agregarNuevaTarea(nuevaTarea){
-    const nuevaListaTareas = [...listaTareas,nuevaTarea]
-    listaTareas = nuevaListaTareas
-    recorrerArreglo()
-    return
+function agregarNuevaTarea(nuevaTarea) {
+  const nuevaListaTareas = [...listaTareas, nuevaTarea];
+  listaTareas = nuevaListaTareas;
+  actualizarListaTareas();
+  return;
 }
 
+function actualizarListaTareas() {
+  contenedorTareas.innerHTML = "";
+  listaTareas.forEach(function (tarea, index) {
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.setAttribute("class", "delete-task");
+    deleteTaskBtn.innerHTML = "x";
+    deleteTaskBtn.addEventListener("click", () => eliminarTarea(index));
 
-//agregar tarea a lista de tareas
-function recorrerArreglo(){
-    contenedorTareas.innerHTML = '';
-    listaTareas.forEach(function(tarea){
-        const deleteTaskBtn = document.createElement("button")
-        deleteTaskBtn.setAttribute("id", "delete-task")
-        deleteTaskBtn.innerHTML = "x"
-        
-        const task = document.createElement("li")
-        task.classList.add("task")
-        task.textContent = tarea 
+    const task = document.createElement("li");
+    task.classList.add("task");
+    task.setAttribute("data-id", index);
+    task.textContent = tarea;
 
-        task.appendChild(deleteTaskBtn)
-        contenedorTareas.appendChild(task)
-        deleteTaskBtn.addEventListener("click", saludar(tarea))
-    })
+    task.appendChild(deleteTaskBtn);
+    contenedorTareas.appendChild(task);
+  });
+
+  if (listaTareas.length > 0 && !document.querySelector("#delete-tasks")) {
+    agregarBtnReinicioListaTarea();
+  }else{
+    contenedorPrincipalListaTareas.removeChild(document.querySelector("#delete-tasks"));  
+  }
 }
 
-function saludar(a){
-    console.log(a)
+function agregarBtnReinicioListaTarea() {
+  const deleteAllTaskBtn = document.createElement("button");
+  deleteAllTaskBtn.setAttribute("id", "delete-tasks");
+  deleteAllTaskBtn.innerHTML = "Vaciar lista";
+  deleteAllTaskBtn.addEventListener("click", vaciarListaTareas);
+  contenedorPrincipalListaTareas.appendChild(deleteAllTaskBtn);
+}
+
+function vaciarListaTareas() {
+  contenedorTareas.innerHTML = "";
+  contenedorPrincipalListaTareas.removeChild(document.querySelector("#delete-tasks"));
+  const nuevaListaTareas = [];
+  listaTareas = nuevaListaTareas;
+  return;
+}
+
+function eliminarTarea(index) {
+  const tareasCopia = [...listaTareas];
+  tareasCopia.splice(index, 1);
+  listaTareas = tareasCopia;
+  actualizarListaTareas();
 }
